@@ -96,6 +96,7 @@ public class Field implements Runnable {
         initFrame();
         initField();
         initTimer();
+        testFill();
     }
 
     private void recalcField() {
@@ -131,4 +132,20 @@ public class Field implements Runnable {
         return count;
     }
 
+    private void testFill() {
+        for(int x = 0; x < Config.FIELD_WIDTH; x += 3)
+            for(int y = 0; y < Config.FIELD_HEIGHT; y += 3) {
+                field[x+1][y+1].setAlive(true);
+                field[x+1][y+2].setAlive(true);
+                field[x+2][y+1].setAlive(true);
+                field[x+2][y+2].setAlive(true);
+
+                field[x+1][y+1].setColor();
+                field[x+1][y+2].setColor();
+                field[x+2][y+1].setColor();
+                field[x+2][y+2].setColor();
+            }
+        field[89][90].setAlive(true);
+        field[89][90].setColor();
+    }
 }
